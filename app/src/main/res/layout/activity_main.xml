@@ -36,7 +36,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:text="TextView"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
@@ -55,4 +54,12 @@
         android:textSize="30sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/editText"
         app:layout_constraintStart_toEndOf="@+id/editText" />
+
+    <TextView
+        android:id="@+id/userAnswer"
+        android:layout_width="158dp"
+        android:layout_height="53dp"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="375dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
