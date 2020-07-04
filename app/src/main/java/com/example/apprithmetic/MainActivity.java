@@ -17,17 +17,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         String equation = "10 + 10";
+        final int solution = 20;
         TextView textView = findViewById(R.id.textView);
         textView.setText(String.format("%s =", equation));
-        final TextView userAnswer = findViewById(R.id.userAnswer);
 
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 EditText editText = (EditText)findViewById(R.id.editText);
-                String givenAnswer = editText.getText().toString();
-                userAnswer.setText(givenAnswer);
+                TextView displayResult = findViewById(R.id.displayResult);
+                int givenAnswer = Integer.parseInt(editText.getText().toString());
+                if (givenAnswer == solution) {
+                    displayResult.setText("Correct!");
+                } else {
+                    displayResult.setText("Incorrect!");
+                }
+
             }
         });
     }

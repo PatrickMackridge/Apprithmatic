@@ -1,7 +1,5 @@
 package com.example.apprithmetic;
 
-import android.widget.TextView;
-
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
@@ -27,10 +25,18 @@ public class userInputTests {
     @Rule
     public ActivityTestRule<MainActivity> activityRule
             = new ActivityTestRule<>(MainActivity.class);
+
     @Test
-    public void getUserInput() {
+    public void correctUserInput() {
         onView(withId(R.id.editText)).perform((typeText("20")), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
-        onView(withId(R.id.userAnswer)).check(matches(withText("20")));
+        onView(withId(R.id.displayResult)).check(matches(withText("Correct!")));
+    }
+
+    @Test
+    public void incorrectUserInput() {
+        onView(withId(R.id.editText)).perform((typeText("15")), closeSoftKeyboard());
+        onView(withId(R.id.button)).perform(click());
+        onView(withId(R.id.displayResult)).check(matches(withText("Incorrect!")));
     }
 }
