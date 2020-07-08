@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String equation = "10 + 10";
-        final int solution = 20;
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(String.format("%s =", equation));
+        final EquationGenerator generator = new EquationGenerator();
+        generator.generateEquation();
+        TextView equationText = findViewById(R.id.equationText);
+        equationText.setText(String.format("%s =", generator.getEquation()));
 
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -28,12 +28,11 @@ public class MainActivity extends AppCompatActivity {
                 EditText editText = (EditText)findViewById(R.id.editText);
                 TextView displayResult = findViewById(R.id.displayResult);
                 int givenAnswer = Integer.parseInt(editText.getText().toString());
-                if (givenAnswer == solution) {
+                if (givenAnswer == generator.getSolution()) {
                     displayResult.setText("Correct!");
                 } else {
                     displayResult.setText("Incorrect!");
                 }
-
             }
         });
     }
