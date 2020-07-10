@@ -1,5 +1,6 @@
 package com.example.apprithmetic;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,16 +14,19 @@ public class UnitTest {
 
     QuizLogic testQuizzer = new QuizLogic();
 
+    @Before
+    public void generate_test_equation() {
+        testQuizzer.generateEquation();
+    }
+
     @Test
     public void equation_is_valid() {
-        testQuizzer.generateEquation();
         assertTrue(testQuizzer.getEquation().matches("^\\d+\\s[+-]\\s\\d+$"));
     }
 
     @Test
     public void solution_is_correct() {
         int testSolution;
-        testQuizzer.generateEquation();
 
         String[] equationArray = testQuizzer.getEquation().split(" ");
         int testNum1 = Integer.parseInt(equationArray[0]);
@@ -35,5 +39,17 @@ public class UnitTest {
             testSolution = testNum1 - testNum2;
         }
         assertEquals(testSolution, testQuizzer.getSolution());
+    }
+
+    @Test
+    public void user_answer_is_correct() {
+        String correctUserAnswer = String.valueOf(testQuizzer.getSolution());
+        assertTrue(testQuizzer.answerIsCorrect(correctUserAnswer));
+    }
+
+    @Test
+    public void user_answer_is_incorrect() {
+        String incorrectUserAnswer = String.valueOf(testQuizzer.getSolution() - 5);
+        assertFalse(testQuizzer.answerIsCorrect(incorrectUserAnswer));
     }
 }

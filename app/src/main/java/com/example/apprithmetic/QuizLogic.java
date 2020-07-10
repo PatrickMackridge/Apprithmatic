@@ -27,4 +27,14 @@ public class QuizLogic {
     public long getSolution() {
         return solution;
     }
+
+    public boolean answerIsCorrect(String userAnswer) {
+        if (userAnswer.equals(String.valueOf(solution))) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
 }
