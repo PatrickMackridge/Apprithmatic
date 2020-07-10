@@ -1,12 +1,11 @@
 package com.example.apprithmetic;
 
-public class EquationGenerator {
+public class QuizLogic {
     String equation;
     int solution;
 
     public void generateEquation() {
-        equation = "10 + 10";
-        solution = 20;
+
     }
 
     public String getEquation() {

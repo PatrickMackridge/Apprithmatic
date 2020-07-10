@@ -10,9 +10,12 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 public class UnitTest {
+
+    QuizLogic testQuizzer = new QuizLogic();
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
-        MainActivity main = new MainActivity();
+    public void equation_is_valid() {
+        testQuizzer.generateEquation();
+        assertTrue(testQuizzer.getEquation().matches("^\\d+\\s[+-]\\s\\d+$"));
     }
 }
