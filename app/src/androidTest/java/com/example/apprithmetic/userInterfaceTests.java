@@ -29,14 +29,14 @@ public class userInterfaceTests {
 
     @Test
     public void correctUserInput() {
-        onView(withId(R.id.editText)).perform((typeText("20")), closeSoftKeyboard());
+        onView(withId(R.id.userInput)).perform((typeText("20")), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.displayResult)).check(matches(withText("Correct!")));
     }
 
     @Test
     public void incorrectUserInput() {
-        onView(withId(R.id.editText)).perform((typeText("15")), closeSoftKeyboard());
+        onView(withId(R.id.userInput)).perform((typeText("15")), closeSoftKeyboard());
         onView(withId(R.id.button)).perform(click());
         onView(withId(R.id.displayResult)).check(matches(withText("Incorrect!")));
     }
