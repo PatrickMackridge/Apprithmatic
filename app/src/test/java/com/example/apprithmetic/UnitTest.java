@@ -44,12 +44,12 @@ public class UnitTest {
     @Test
     public void user_answer_is_correct() {
         String correctUserAnswer = String.valueOf(testQuizzer.getSolution());
-        assertTrue(testQuizzer.answerIsCorrect(correctUserAnswer));
+        assertEquals("Correct", testQuizzer.answerIsCorrect(correctUserAnswer));
     }
 
     @Test
     public void user_answer_is_incorrect() {
         String incorrectUserAnswer = String.valueOf(testQuizzer.getSolution() - 5);
-        assertFalse(testQuizzer.answerIsCorrect(incorrectUserAnswer));
+        assertEquals("Incorrect", testQuizzer.answerIsCorrect(incorrectUserAnswer));
     }
 }

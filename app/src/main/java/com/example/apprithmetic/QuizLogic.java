@@ -28,11 +28,11 @@ public class QuizLogic {
         return solution;
     }
 
-    public boolean answerIsCorrect(String userAnswer) {
+    public String answerIsCorrect(String userAnswer) {
         if (userAnswer.equals(String.valueOf(solution))) {
-            return true;
+            return "Correct";
         } else {
-            return false;
+            return "Incorrect";
         }
     }
 
