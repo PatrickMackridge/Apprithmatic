@@ -46,24 +46,7 @@ public class MainActivity extends AppCompatActivity {
         quizzer = new QuizLogic();
         showNewEquation(quizzer);
 
-//        Handler handler = new Handler(Looper.getMainLooper());
-
-//        class NextQuestion extends Thread {
-//            public void run() {
-//                try {
-//                    Thread.sleep(2000);
-//                }
-//                catch (InterruptedException ex) {
-//                    Thread.currentThread().interrupt();
-//                    ex.printStackTrace();
-//                }
-//
-//                showNewEquation(quizzer);
-//
-//            }
-//        }
-
-
+        final Handler handler = new Handler(Looper.getMainLooper());
 
         button.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -71,33 +54,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 result = quizzer.answerIsCorrect(userInput.getText().toString());
                 displayResult.setText(result);
+
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            TimeUnit.SECONDS.sleep(2);
+                        }
+                        catch (InterruptedException ex) {
+                            Thread.currentThread().interrupt();
+                            ex.printStackTrace();
+                        }
+                        showNewEquation(quizzer);
+                        userInput.getText().clear();
+                        displayResult.setText("");
+                    }
+                });
             }
         });
     }
-
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//
-//        if (result.equals("Correct") || result.equals("Incorrect")) {
-//
-//            displayResult.setText(result);
-//
-//            try {
-//                TimeUnit.SECONDS.sleep(2);
-//            }
-//            catch (InterruptedException ex) {
-//                Thread.currentThread().interrupt();
-//                ex.printStackTrace();
-//            }
-//
-//            nextEquation(quizzer);
-////            userInput.getText().clear();
-////            displayResult.setText("");
-////            }
-////
-////
-//    }
 
     public void showNewEquation(QuizLogic quizzer) {
 
