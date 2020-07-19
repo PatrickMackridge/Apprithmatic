@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     EditText userInput;
     Button button;
     TextView displayResult;
+    TextView displayStreak;
 
     QuizLogic quizzer;
 
@@ -37,14 +38,18 @@ public class MainActivity extends AppCompatActivity {
 
         userInput = findViewById(R.id.userInput);
         displayResult = findViewById(R.id.displayResult);
+        displayStreak = findViewById(R.id.displayStreak);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onStart() {
         super.onStart();
 
         quizzer = new QuizLogic();
         showNewEquation(quizzer);
+
+        displayStreak.setText("Current Streak: 0");
 
         final Handler handler = new Handler(Looper.getMainLooper());
 
@@ -53,7 +58,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result = quizzer.answerIsCorrect(userInput.getText().toString());
-                displayResult.setText(result);
+                displayResult.setText(result.concat("!"));
+                int currentStreak = quizzer.getStreak();
+                displayStreak.setText("Current Streak: ".concat(String.valueOf(currentStreak)));
 
                 handler.post(new Runnable() {
                     @Override

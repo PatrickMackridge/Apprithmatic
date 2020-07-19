@@ -3,6 +3,7 @@ package com.example.apprithmetic;
 public class QuizLogic {
     String equation;
     long solution;
+    int streak = 0;
 
     public void generateEquation() {
         long num1 = Math.round(Math.random() * 100);
@@ -20,6 +21,16 @@ public class QuizLogic {
         equation = String.format("%s %s %s", num1, operator, num2);
     }
 
+    public String answerIsCorrect(String userAnswer) {
+        if (userAnswer.equals(String.valueOf(solution))) {
+            streak++;
+            return "Correct";
+        } else {
+            streak = 0;
+            return "Incorrect";
+        }
+    }
+
     public String getEquation() {
         return equation;
     }
@@ -28,12 +39,8 @@ public class QuizLogic {
         return solution;
     }
 
-    public String answerIsCorrect(String userAnswer) {
-        if (userAnswer.equals(String.valueOf(solution))) {
-            return "Correct";
-        } else {
-            return "Incorrect";
-        }
+    public int getStreak() {
+        return streak;
     }
 
 
