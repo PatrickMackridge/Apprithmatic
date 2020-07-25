@@ -3,11 +3,13 @@ package com.example.apprithmetic;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.icu.text.SymbolTable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         quizzer = new QuizLogic();
         showNewEquation(quizzer);
+        showKeyboard(userInput);
 
         displayStreak.setText("Current Streak: 0");
 
@@ -87,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
 
         TextView equationText = findViewById(R.id.equationText);
         equationText.setText(String.format("%s =", quizzer.getEquation()));
+        showKeyboard(userInput);
+    }
+
+    public void showKeyboard(View inputField) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(inputField, InputMethodManager.SHOW_IMPLICIT);
     }
 
 }
