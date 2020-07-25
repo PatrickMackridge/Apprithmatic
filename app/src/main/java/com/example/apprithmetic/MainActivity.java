@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.icu.text.SymbolTable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -60,8 +60,9 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                result = quizzer.answerIsCorrect(userInput.getText().toString());
+                userInput.onEditorAction(EditorInfo.IME_ACTION_DONE);
 
+                result = quizzer.answerIsCorrect(userInput.getText().toString());
                 if (result.equals("Correct")) {
                     displayResult.setText(result.concat("!"));
                 } else {
