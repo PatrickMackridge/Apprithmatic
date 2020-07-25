@@ -61,7 +61,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 result = quizzer.answerIsCorrect(userInput.getText().toString());
-                displayResult.setText(result.concat("!"));
+
+                if (result.equals("Correct")) {
+                    displayResult.setText(result.concat("!"));
+                } else {
+                    String solution = ": ".concat(Long.toString(quizzer.getSolution()));
+                    displayResult.setText(result.concat(solution));
+                }
+
                 int currentStreak = quizzer.getStreak();
                 displayStreak.setText("Current Streak: ".concat(String.valueOf(currentStreak)));
 
