@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         quizzer = new QuizLogic();
         showNewEquation(quizzer);
-        showKeyboard(userInput);
 
         displayStreak.setText("Current Streak: 0");
 
