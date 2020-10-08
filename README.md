@@ -13,7 +13,11 @@ To get Apprithmetic on your Android phone:
 
 ## Run the project locally
 
-If you want to have a play around with the source code: feel free to for this repo to your own GitHub account. Then, to import this project into Android Studio, open up AS and select File -> New -> Project from Version Control -> GitHub. Then use your repo's URL (https://github.com/<yourUsername>/Apprithmatic) to import the project directly into Android Studio!
-Once the project has been imported connect your Android device via USB, select it from the Android Studio device menu and click Run to run the app on your phone. Feel free to add to your own version of the app, although at this time I'm not looking for any outside contributions to the original repo. Thanks!
+If you want to have a play around with the source code feel free to fork this repo to your own GitHub account. 
+- To import this project into Android Studio, open up AS and select File -> New -> Project from Version Control -> GitHub.
+- Use your repo's URL (https://github.com/<yourUsername>/Apprithmatic) to import the project directly into Android Studio.
+- Once the project has been imported connect your Android device via USB, select it from the Android Studio device menu and click Run to run the app on your phone. 
+
+Feel free to add to your own version of the app, although at this time I'm not looking for any outside contributions to the original repo. Thanks!
 
 ### Happy quizzing!
